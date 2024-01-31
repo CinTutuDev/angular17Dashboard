@@ -1,1 +1,20 @@
-<p>control-flow works!</p>
+<section
+  class="grid grid-cols-1 w-full md:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3"
+>
+  <div class="bg-white rounded shadow p-10">
+    <h2 class="text-2xl mb-5 font-medium">if: {{ showContent() }}</h2>
+    <button
+      (click)="toggleContent()"
+      x-on:click="open = false"
+      class="px-3 p-2 py-1 bg-slate-400 text-white rounded-md w-full sm:w-auto"
+    >
+      Click me!!
+    </button>
+
+    @if (showContent()) {
+    <p>👋 ¡Hola! {{ myName }}</p>
+    }@else {
+    <p>*******************</p>
+    }
+  </div>
+</section>
