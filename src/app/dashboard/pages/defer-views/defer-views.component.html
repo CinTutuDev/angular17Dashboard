@@ -1,1 +1,44 @@
-<p>defer-views works!</p>
+<app-title title="Defer Views" />
+
+<section class="grid grid-cols-1">
+  @defer() {
+  <app-heavy-loaders-low cssClass="bg-blue-200" />
+  } @placeholder () {
+  <p
+    class="mb-5 font-bold text-2xl text-red-700 form-red-600 to-red-600 animate-pulse text-center"
+  >
+    Cargando ⌛...
+  </p>
+  <p
+    class="h-[600] w-full bg-gradient-to-r form-gray-600 to-gray-400 animate-pulse text-center"
+  >
+    Cargando ⌛...
+  </p>
+  } @defer() {
+  <app-heavy-loaders-low cssClass="bg-green-200" />
+  } @placeholder () {
+  <p
+    class="mb-5 font-bold text-2xl text-red-700 form-red-600 to-red-600 animate-pulse text-center"
+  >
+    Cargando ⌛...
+  </p>
+  <p
+    class="h-[600] w-full bg-gradient-to-r form-gray-600 to-gray-400 animate-pulse text-center"
+  >
+    Cargando ⌛...
+  </p>
+  } @defer() {
+  <app-heavy-loaders-low cssClass="bg-orange-200" />
+  } @placeholder () {
+  <p
+    class="mb-5 font-bold text-2xl text-red-700 form-red-600 to-red-600 animate-pulse text-center"
+  >
+    Cargando ⌛...
+  </p>
+  <p
+    class="h-[600] w-full bg-gradient-to-r form-gray-600 to-gray-400 animate-pulse text-center"
+  >
+    Cargando ⌛...
+  </p>
+  }
+</section>
