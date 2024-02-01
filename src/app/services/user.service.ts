@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { User, UserResponse } from '@interfaces/req-response';
-import { delay } from 'rxjs';
+import type { User, UserResponse, UsersResponse } from '@interfaces/req-response';
+import { delay, map, pipe } from 'rxjs';
 
 interface State {
   users: User[];
@@ -14,7 +14,7 @@ interface State {
 export class UserService {
   private http = inject(HttpClient);
 
-  private url = 'https://reqres.in/api/users';
+  private url = 'https://reqres.in/api/users/';
 
   /* Numeral es private */
   #state = signal<State>({
@@ -24,6 +24,7 @@ export class UserService {
   /* señal computada de solo lectura */
   public users = computed(() => this.#state().users);
   public loading = computed(() => this.#state().loading);
+ /*  public loadingL = computed(() => this.#state().loading); */
 
   constructor() {
     this.http
@@ -37,5 +38,12 @@ export class UserService {
       });
 
     console.log('Cargando data');
+  }
+
+  getUserById(id: string) {
+   return this.http.get<UsersResponse>(`${this.url}${id}`).pipe(
+      delay(1500),
+      map((resp) => resp.data)
+    );
   }
 }
